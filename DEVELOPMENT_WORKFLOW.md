@@ -1,10 +1,11 @@
-# Development Workflow
+# OPA Development Workflow
 
-This reusable workflow governs work where the project has adopted it. Read the
-effective repository and workspace `AGENTS.md` files for ownership, runtime,
-validation, and external-action policy. Instruction templates are examples;
-they do not replace active local instructions. Honor the user's current scope
-and existing authorization.
+This workspace owns the workflow for OPA and coordination across its independent
+components. Reusable agent skills live in the user's `.codex/skills/`. Maintain
+those skills there and project rules here; no separate repository of workflow
+files or matching copy of this document is required. Read component and workspace
+`AGENTS.md` files for ownership, runtime, validation, and external-action policy.
+Honor the user's current scope and existing authorization.
 
 ## Choose a proportional lane
 
@@ -87,6 +88,24 @@ preserving a finding. Include its conclusion or open hypothesis, supporting
 evidence, applicability, and conditions that require rechecking it. Keep raw
 logs in artifacts and link them. An inconclusive finding may remain open.
 
+When durable recovery or repeated measurement is useful, keep one `agent-task`
+JSON block in that existing index or record. The installed manager skill's
+`references/task-evidence.md` describes the schema and helpers: generate a
+context brief, capture an explicitly authorized check, verify its source/input/
+environment and retained output, and report usage for selected task turns.
+The coordinator owns this state; generated briefs/reports are derived views.
+Reconcile actual Git state and process liveness before resuming. A stale receipt
+does not authorize a rerun. Ordinary local fixes need no structured block.
+
+Reuse workspace commit-set and container validation receipts as explicit inputs
+when those gates apply; the generic helper does not replace their semantics.
+Store raw logs and receipts in retained ignored artifacts, and preserve durable
+conclusions/aggregates in the task record. Missing payloads invalidate evidence.
+Whole-task usage includes coordinator/setup, implementation, retries and review;
+quality is separately recorded, and unknown cost/rework remains unknown. The
+[slice C record](maintenance/2026-10-15-agentic-workflow-slice-c.md) demonstrates
+recovery, stale evidence, and an inclusive pilot measurement.
+
 ## Implementation, validation, and commits
 
 Inspect the actual worktree and preserve unrelated changes. Use isolated
@@ -123,6 +142,13 @@ authorization. Pushing, opening a remote PR, publishing, and other external
 actions follow the user's authorization and effective project policy.
 
 ## Coordination and handoff
+
+The installed `manager` skill supplies the delegation workflow and role profiles
+under the user's `.codex/agents/`. Route at assignment boundaries using the
+current client's controls; retain a single agent for small tasks when delegation
+adds no benefit. Existing root settings remain unchanged. For the adopted pilot
+and verified client path, see the
+[slice B receipt](maintenance/2026-10-15-agentic-workflow-slice-b.md).
 
 Delegate when independence, expertise, or elapsed time benefits. A compact
 assignment supplies the outcome, owning repository/worktree, prerequisites and
